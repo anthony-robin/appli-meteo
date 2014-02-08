@@ -1,0 +1,317 @@
+@import "compass";
+$default-transition-duration: .3s;
+$duration: .5s;
+
+$mainColor: #1f253d;
+$secondaryColor: #4f597b;
+$terceryColor: #11a7ab;
+
+$headerHeight: 60px;
+
+@include global-reset;
+
+*{
+	@include box-sizing(border-box);
+	outline: none;
+}
+
+a{
+	@include link-colors($terceryColor);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+input, textarea{
+	border: none;
+	-webkit-appearance: none;
+	@include border-radius(0px);
+}
+
+body{
+	color: #8f99b7;
+	font-family: "Ubuntu";
+	font-size: 16px;
+	background-color: $mainColor;
+}
+
+h1{
+	font-size: 28px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	margin: 45px 0;
+	display: none;
+}
+
+p{
+	margin: 1em 0px;
+	@include clearfix;
+	line-height: 24px;
+}
+
+.chapo{
+	font-weight: bold;
+}
+
+label{
+	display: block;
+	margin-bottom: 5px;
+}
+
+input.text, textarea.text{
+	display: block;
+	width: 100%;
+	height: 48px;
+	border: 1px solid $mainColor;
+	background-color: $secondaryColor;
+	color: #fff;
+	font-size: 16px;
+	padding-left: 10px;
+	@include border-radius(4px);
+	@include background-clip(padding-box);
+	@include transition-duration;
+	&:focus{
+		border: 1px solid $terceryColor;
+	}
+}
+
+textarea.text{
+	height: 150px;
+	padding-top: 15px;
+}
+
+input.submit, .btn{
+	display: inline-block;
+	padding: 0 5px;
+	height: 50px; line-height: 50px;
+	border: none;
+	text-transform: uppercase; text-align: center;
+	font-size: 16px; color: #fff;
+	@include border-radius(4px);
+	@include background-clip(padding-box);
+	background-color: #e54b65;
+	float: right;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.btn{
+	background-color: $terceryColor;
+	float: left;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+.back{
+	display: block;
+	position: absolute;
+	top: -60px; left: 0;
+	color: #fff;
+	z-index: 10;
+	width: 60px; height: 60px; line-height: 60px;
+	font-size: 35px;
+	margin-left: 6px;
+	cursor: pointer;
+}
+
+.loader{
+	@extend .panel;
+	background: url('../img/ajax-loader.GIF') center center no-repeat rgba(57, 66, 100, 0.6);
+	z-index: 500;
+	// background-color: rgba(255,255,255, .15);
+}
+
+.row-title{
+	height: 60px; line-height: 60px;
+	text-transform: uppercase;
+	background-color: #cb314b;
+	@include border-radius(4px 4px 0 0);
+	@include background-clip(padding-box);
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.row{
+	height: 60px; line-height: 60px;
+	overflow: hidden;
+	background-color: $secondaryColor;
+	border-bottom: 1px solid $mainColor;
+	color: #fff;
+	// font-size: 22px;
+
+	.temperature{
+		text-align: right;
+		// height: 60px; line-height: 60px;
+		padding-right: 20px;
+		font-size: 22px;
+		float: right;
+		margin-left: 40px;
+	}
+
+	.date{
+		float: right;
+		color: $mainColor;
+		text-transform: uppercase;
+		font-weight: bold;
+
+		strong{
+			color: #fff;
+			margin-right: 5px;
+		}
+	}
+
+
+	span{
+		float: left;
+		padding-left: 20px;
+		font-size: 35px;
+		height: 60px; line-height: 60px;
+		margin-right: 30px;
+	}
+
+	&.row_active{
+		height: 120px; // line-height: 120px;
+		background-color: #e54b65;
+
+		.date{
+			color: #fff;
+			float: left;
+			line-height: 120px;
+			// height: 40px;
+		}
+
+		.temperature{
+			font-size: 50px;
+			float: left;
+			line-height: 120px;
+			// height: 80px;
+			margin-left: 15px;
+
+		}
+
+		span{
+			float: right;
+			font-size: 95px;
+			height: 120px; line-height: 120px;
+		}
+	}
+
+
+
+}
+
+
+/*
+|-----------------------------------------------------
+| APP
+|-----------------------------------------------------
+|
+*/
+.header{
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	height: $headerHeight; line-height: $headerHeight;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	background-color: $terceryColor;
+}
+
+.view{
+	position: absolute;
+	top: $headerHeight; right: 0; bottom: $headerHeight; left: 0;
+}
+
+.nav{
+	position: absolute;
+	bottom: 0; left: 0; right: 0;
+	height: $headerHeight; line-height: $headerHeight;
+	color: #fff;
+	text-align: center;
+	background-color: $secondaryColor;
+	@include clearfix;
+
+	a{
+		display: block;
+		width: 33%;
+		float: left;
+		color: #fff;
+		height: $headerHeight; line-height: $headerHeight;
+		text-decoration: none;
+		font-size: 25px;
+		@include transition-duration;
+
+		&:first-child, &:nth-child(2){
+			border-right: 1px solid $mainColor;
+		}
+	}
+	.active{border-top: 3px solid $terceryColor;}
+	span{
+		margin-top: 15px;
+	}
+}
+
+.panel{
+	position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling:touch;
+	@include transition-duration($duration);
+}
+
+.panel-padding{
+	padding: 25px;
+}
+
+.left{@include transform(translate3D(-100%, 0, 0)); }
+.center{@include transform(translate3D(0%, 0, 0)); }
+.right{@include transform(translate3D(100%, 0, 0)); }
+
+
+/*
+|-----------------------------------------------------
+| Icomoon
+|-----------------------------------------------------
+|
+*/
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-6ervqg');
+	src:url('fonts/icomoon.eot?#iefix-6ervqg') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-6ervqg') format('woff'),
+		url('fonts/icomoon.ttf?-6ervqg') format('truetype'),
+		url('fonts/icomoon.svg?-6ervqg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {content: "\e60a"; }
+.icon-earth:before {content: "\e60b"; }
+.icon-spinner:before {content: "\e60c"; }
+.icon-arrow-left:before {content: "\e60d"; }
+.icon-sun:before, .icon-clear:before {content: "\e60e"; }
+.icon-cloudy:before {content: "\e60f"; }
+.icon-rain:before {content: "\e610"; }
+.icon-clouds:before {content: "\e611"; }
+.icon-snow:before {content: "\e612"; }
+.icon-weather:before {content: "\e613"; }
+.icon-storm:before {content: "\e614"; }
+.icon-snowy2:before {content: "\e615"; }
+.icon-envelope:before {content: "\e616"; }
