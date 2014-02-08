@@ -24,8 +24,13 @@ How to use:
 * Enjoy !
 
 
+Screenshot
+----------
+![Home of the app](img/readme/home.png "Home of the application")
+![Weather previson](img/readme/meteo.png "Weather prevision")
 
-Sources
+
+Credit
 --------
 * [Grafikart](http://www.grafikart.fr/tutoriels/cordova/cordova-angular-454) for his amazing tutorial
 * [Raul Taciu](http://dribbble.com/shots/1135984-Flat-Design-UI-Components?list=searches) for the design of the app.
